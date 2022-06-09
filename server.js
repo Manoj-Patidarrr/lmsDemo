@@ -31,6 +31,9 @@ app.use((req, res, next) => {
 app.use("/uploads", express.static("uploads"));
 app.use(cors({ credentials: true }));
 app.use("/shethink/v1", route(express.Router()));
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
 const port = process.env.PORT || 3211;
 app.listen(port, () => {
