@@ -10,7 +10,9 @@ import morgan from "morgan";
 connect();
 
 const app = express();
-
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 app.use(express.json());
 app.use(morgan("tiny"));
 app.use(express.urlencoded({ extended: false }));
