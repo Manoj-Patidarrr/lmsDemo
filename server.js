@@ -10,9 +10,7 @@ import morgan from "morgan";
 connect();
 
 const app = express();
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+
 app.use(express.json());
 app.use(morgan("tiny"));
 app.use(express.urlencoded({ extended: false }));
@@ -33,7 +31,9 @@ app.use((req, res, next) => {
 app.use("/uploads", express.static("uploads"));
 app.use(cors({ credentials: true }));
 app.use("/shethink/v1", route(express.Router()));
-
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 const port = process.env.PORT || 3211;
 app.listen(port, () => {
   console.log(`listening to port ${port}`);
