@@ -19,6 +19,21 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Creating env file
+      run: |
+          touch .env
+          echo MONGODB_PORT=${{ secrets.DATABASE_PORT_STAGING }} >> .env
+          echo USER_NAME=${{ secrets.USER_NAME_STAGING }} >> .env
+          echo USER_PASS=${{ secrets.USER_PASS_STAGING }} >> .env
+          echo PORT=${{ secrets.PORT_STAGING }} >> .env
+          echo PRIVATE_KEY=${{ secrets.PRIVATE_KEY_STAGING }} >> .env
+          echo AWS_BUCKET_NAME=${{ secrets.AWS_BUCKET_NAME_STAGING }} >> .env
+          echo AWS_BUCKET_REGION=${{ secrets.AWS_BUCKET_REGION_STAGING }} >> .env
+          echo AWS_ACCESS_KEY=${{ secrets.AWS_ACCESS_KEY_STAGING }} >> .env
+          echo AWS_SECRET_KEY=${{ secrets.AWS_SECRET_KEY_STAGING }} >> .env
+          echo SENDGRID_API_KEY=${{ secrets.SENDGRID_API_KEY_STAGING }} >> .env
+          cat .env
+        
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
