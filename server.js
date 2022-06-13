@@ -32,7 +32,7 @@ app.use("/uploads", express.static("uploads"));
 app.use(cors({ credentials: true }));
 app.use("/shethink/v1", route(express.Router()));
 app.get('/', (req, res) => {
-  res.send('<h1>Hello World!manoj patel this is cicd pipeline</h1>')
+  res.send('<h1>Hello World!</h1>')
 })
 
 const port = process.env.PORT || 3211;
